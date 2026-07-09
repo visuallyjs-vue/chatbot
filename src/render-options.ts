@@ -1,4 +1,9 @@
-import {BackgroundPlugin, GeneratedGridBackground, LassoPlugin} from "@visuallyjs/browser-ui";
+import {BackgroundPlugin,
+    GeneratedGridBackground,
+    LassoPlugin,
+    EVENT_CANVAS_CLICK,
+Surface
+} from "@visuallyjs/browser-ui";
 
 /**
  * Render options control the basic behaviour and appearance of the UI. There are a lot of render options available,
@@ -22,7 +27,10 @@ const renderOptions = {
         }
     ],
     zoomToFit:true,
-    consumeRightClick:false
+    consumeRightClick:false,
+    events:{
+        [EVENT_CANVAS_CLICK]:(s:Surface) => s.model.clearSelection()
+    }
 }
 
 export default renderOptions
