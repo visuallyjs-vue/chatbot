@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { isNode, isPort, type Base } from "@visuallyjs/browser-ui";
+import {computed, ref } from "vue";
+import { isNode, isPort} from "@visuallyjs/browser-ui";
 import { InspectorComponent } from "@visuallyjs/browser-ui-vue";
 import {
   ACTION_TEST, ACTION_MESSAGE, ACTION_CHOICE, ACTION_INPUT, START, END
@@ -9,19 +9,18 @@ import {
 const CHOICE_PORT = "choicePort";
 const EDGE = "edge";
 
-const currentType = ref('');
+const current = ref(null)
+const currentType = computed(() => {
+  if (current == null) {
+    return null
+  } else
+    return isNode(current.value) ? current.value.data.type : isPort(current.value) ? CHOICE_PORT : EDGE;
+});
 
-const renderEmptyContainer = () => {
-  currentType.value = '';
-};
-
-const refresh = (obj: Base) => {
-  currentType.value = isNode(obj) ? obj.data.type : isPort(obj) ? CHOICE_PORT : EDGE;
-};
 </script>
 
 <template>
-  <InspectorComponent :refresh="refresh" :renderEmptyContainer="renderEmptyContainer">
+  <InspectorComponent v-model="current">
     <div v-if="currentType === ''"></div>
     <div v-else-if="currentType === START"></div>
     <div v-else-if="currentType === END"></div>

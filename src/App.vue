@@ -33,7 +33,7 @@ function miniviewType(vertex) {
 <template>
     <SurfaceProvider>
         <div class="vjs-chatbot-canvas">
-            <SurfaceComponent :renderOptions="renderOptions" :modelOptions="modelOptions" :url="url"
+            <SurfaceComponent :renderOptions="renderOptions" :modelOptions="modelOptions" url="/dataset.json"
                               :viewOptions="viewOptions"/>
             <ControlsComponent/>
             <MiniviewComponent :typeFunction="miniviewType"/>
