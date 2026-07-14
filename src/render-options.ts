@@ -32,7 +32,7 @@ const renderOptions = {
         [EVENT_CANVAS_CLICK]:(s:Surface) => s.model.clearSelection()
     },
     dragOptions:{
-        cssFilter:".vjs-choice-add"
+        cssFilter:".vjs-choice-add, .vjs-delete"
     }
 }
 
