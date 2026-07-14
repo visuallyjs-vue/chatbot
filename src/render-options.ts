@@ -30,6 +30,9 @@ const renderOptions = {
     consumeRightClick:false,
     events:{
         [EVENT_CANVAS_CLICK]:(s:Surface) => s.model.clearSelection()
+    },
+    dragOptions:{
+        cssFilter:".vjs-choice-add"
     }
 }
 
