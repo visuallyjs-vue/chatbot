@@ -16,6 +16,10 @@ defineProps({
   url: {
     type: String,
     default: "/dataset.json"
+  },
+  hidePaletteAndInspector: {
+      type: Boolean,
+      default: false
   }
 })
 
@@ -33,12 +37,12 @@ function miniviewType(vertex) {
 <template>
     <SurfaceProvider>
         <div class="vjs-chatbot-canvas">
-            <SurfaceComponent :renderOptions="renderOptions" :modelOptions="modelOptions" url="/dataset.json"
+            <SurfaceComponent :renderOptions="renderOptions" :modelOptions="modelOptions" :url="url"
                               :viewOptions="viewOptions"/>
             <ControlsComponent/>
             <MiniviewComponent :typeFunction="miniviewType"/>
         </div>
-        <div class="vjs-chatbot-rhs">
+        <div v-if="!hidePaletteAndInspector" class="vjs-chatbot-rhs">
             <PaletteComponent/>
             <InspectorComponent/>
         </div>

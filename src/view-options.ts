@@ -6,7 +6,7 @@ import {
     PortEventCallbackPayload
 } from "@visuallyjs/browser-ui";
 
-import {ACTION_CHOICE, ACTION_INPUT, ACTION_MESSAGE, ACTION_TEST, END, SELECTABLE, START} from "./constants";
+import {ACTION_AI, ACTION_CHOICE, ACTION_INPUT, ACTION_MESSAGE, ACTION_TEST, END, SELECTABLE, START} from "./constants";
 
 import StartComponent from './components/StartComponent.vue'
 import EndComponent from './components/EndComponent.vue'
@@ -14,6 +14,7 @@ import MessageComponent from './components/MessageComponent.vue'
 import InputComponent from './components/InputComponent.vue'
 import ChoiceComponent from './components/ChoiceComponent.vue'
 import TestComponent from './components/TestComponent.vue'
+import AiAgentComponent from './components/AiAgentComponent.vue'
 
 const viewOptions = {
     nodes:{
@@ -47,6 +48,10 @@ const viewOptions = {
         [ACTION_TEST]:{
             parent:SELECTABLE,
             component:TestComponent
+        },
+        [ACTION_AI]:{
+            parent:SELECTABLE,
+            component:AiAgentComponent
         }
     },
     edges:{
